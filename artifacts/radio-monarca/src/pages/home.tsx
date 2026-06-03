@@ -1,7 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "wouter";
 import { SiFacebook, SiWhatsapp } from "react-icons/si";
-import { Radio, MapPin, Phone, Mail, ChevronRight, PlayCircle, Users, Activity, Target } from "lucide-react";
+import { Radio, MapPin, Phone, Mail, ChevronRight, PlayCircle, Users, Activity, Target, Video } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -55,6 +56,7 @@ export default function HomePage() {
             <a href="#comunidad" className="hover:text-primary transition-colors">Comunidad</a>
             <a href="#publicidad" className="hover:text-primary transition-colors">Publicidad</a>
             <a href="#contacto" className="hover:text-primary transition-colors">Contacto</a>
+            <Link href="/videos" className="hover:text-primary transition-colors" data-testid="link-nav-videos">Videos</Link>
           </div>
           <Button 
             className="hidden md:flex gap-2 rounded-full font-semibold shadow-lg shadow-primary/20"
@@ -108,10 +110,21 @@ export default function HomePage() {
                 size="lg" 
                 className="w-full sm:w-auto h-16 px-10 text-lg rounded-full font-bold shadow-xl shadow-primary/30 group hover:scale-105 transition-transform duration-300"
                 onClick={() => window.open(radioUrl, "_blank")}
+                data-testid="button-hero-listen"
               >
                 <PlayCircle className="w-6 h-6 mr-3 group-hover:animate-pulse" />
                 Escucha en Vivo
               </Button>
+              <Link href="/videos" data-testid="link-hero-videos">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="w-full sm:w-auto h-16 px-10 text-lg rounded-full font-bold border-white/20 hover:border-primary/50 hover:text-primary hover:scale-105 transition-transform duration-300"
+                >
+                  <Video className="w-6 h-6 mr-3" />
+                  Ver Videos
+                </Button>
+              </Link>
             </div>
           </motion.div>
         </div>
