@@ -6,33 +6,33 @@ import { Radio, ArrowLeft } from "lucide-react";
 const videos = [
   {
     id: "JF3fUOGfFkk",
-    title: "Transmisión en Vivo",
-    description: "Disfruta de nuestra transmisión en vivo desde los estudios de Radio Monarca 106.7 FM.",
+    title: "CONTEPEC MICHOACÁN",
+    description: "¡Te esperamos con el corazón abierto!",
   },
   {
     id: "BeydC_RBRJg",
-    title: "Programa Especial",
-    description: "Un programa especial dedicado a la cultura y tradiciones de Contepec, Michoacán.",
+    title: "Gran Fiesta en Honor a Padre Jesús",
+    description: "Familias, amigos y visitantes se unieron en un ambiente lleno de fe, música y tradición.",
   },
   {
     id: "Wjo5ukOz1ZI",
-    title: "Noticias Locales",
-    description: "Las noticias más importantes de nuestra comunidad, al momento.",
+    title: "📍 Hecho en Contepec",
+    description: "Un par de hermanas preparan deliciosos platillos de auténtica comida casera.",
   },
   {
     id: "Hpuxv4TuqnM",
-    title: "Música Regional",
-    description: "Lo mejor de la música regional mexicana en un programa imperdible.",
+    title: "¿UN OSO BAILAR?🐻",
+    description: "Tiburcio, el oso acróbata que llegó al pueblo con los misteriosos “húngaros”",
   },
   {
     id: "LoVkFxWievk",
-    title: "Entrevista Especial",
-    description: "Conversamos con personalidades destacadas de Contepec y Michoacán.",
+    title: "Entrevista Especial 📬",
+    description: "Don Wilfrido Juan, el agente de correos de Contepec, nos relató su propia historia…",
   },
   {
     id: "XYLwIXEFu0Q",
-    title: "Eventos de la Comunidad",
-    description: "Cobertura de los eventos más importantes de nuestra región.",
+    title: "🌟 Hecho en Contepec: Restaurante Monarca 🍽️",
+    description: "Un platillo irresistible, preparado con ingredientes frescos y el auténtico sazón de manos 100% contepequenses.",
   },
 ];
 
