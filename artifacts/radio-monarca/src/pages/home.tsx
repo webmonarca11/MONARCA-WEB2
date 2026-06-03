@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { SiFacebook } from "react-icons/si";
+import { SiFacebook, SiWhatsapp } from "react-icons/si";
 import { Radio, MapPin, Phone, Mail, ChevronRight, PlayCircle, Users, Activity, Target } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -446,6 +446,18 @@ export default function HomePage() {
           </div>
         </div>
       </footer>
+
+      {/* Floating WhatsApp Button */}
+      <a
+        href="https://wa.me/527225599836"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-testid="link-whatsapp-float"
+        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#1ebe5d] shadow-lg hover:shadow-[#25D366]/40 flex items-center justify-center transition-all hover:scale-110"
+        aria-label="Contáctanos por WhatsApp"
+      >
+        <SiWhatsapp className="w-7 h-7 text-white" />
+      </a>
     </div>
   );
 }
