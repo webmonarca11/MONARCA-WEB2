@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { SiFacebook, SiWhatsapp } from "react-icons/si";
@@ -9,6 +9,7 @@ import {
   Mail,
   ChevronRight,
   PlayCircle,
+  PauseCircle,
   Users,
   Activity,
   Target,
@@ -57,7 +58,20 @@ export default function HomePage() {
     form.reset();
   }
 
-  const radioUrl = "https://radio.garden/listen/radio-monarca-106-7-fm/";
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  function handlePlay() {
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (isPlaying) {
+      audio.pause();
+      setIsPlaying(false);
+    } else {
+      audio.play();
+      setIsPlaying(true);
+    }
+  }
 
   return (
     <div className="min-h-[100dvh] bg-background selection:bg-primary/30 selection:text-primary">
@@ -106,10 +120,11 @@ export default function HomePage() {
           </div>
           <Button
             className="hidden md:flex gap-2 rounded-full font-semibold shadow-lg shadow-primary/20"
-            onClick={() => window.open(radioUrl, "_blank")}
+            onClick={handlePlay}
+            data-testid="button-nav-listen"
           >
-            <PlayCircle className="w-4 h-4" />
-            Escucha en Vivo
+            {isPlaying ? <PauseCircle className="w-4 h-4" /> : <PlayCircle className="w-4 h-4" />}
+            {isPlaying ? "Pausar" : "Escucha en Vivo"}
           </Button>
         </div>
       </nav>
@@ -156,11 +171,13 @@ export default function HomePage() {
               <Button
                 size="lg"
                 className="w-full sm:w-auto h-16 px-10 text-lg rounded-full font-bold shadow-xl shadow-primary/30 group hover:scale-105 transition-transform duration-300"
-                onClick={() => window.open(radioUrl, "_blank")}
+                onClick={handlePlay}
                 data-testid="button-hero-listen"
               >
-                <PlayCircle className="w-6 h-6 mr-3 group-hover:animate-pulse" />
-                Escucha en Vivo
+                {isPlaying
+                  ? <PauseCircle className="w-6 h-6 mr-3" />
+                  : <PlayCircle className="w-6 h-6 mr-3 group-hover:animate-pulse" />}
+                {isPlaying ? "Pausar" : "Escucha en Vivo"}
               </Button>
               <Link href="/videos" data-testid="link-hero-videos">
                 <Button
@@ -290,15 +307,16 @@ export default function HomePage() {
               <div className="absolute inset-0 bg-[url('/hero-bg.png')] opacity-10 bg-cover mix-blend-overlay" />
               <div className="relative z-10">
                 <div className="w-16 h-16 rounded-full bg-black/20 flex items-center justify-center mx-auto mb-6">
-                  <PlayCircle className="w-8 h-8" />
+                  {isPlaying ? <PauseCircle className="w-8 h-8" /> : <PlayCircle className="w-8 h-8" />}
                 </div>
                 <h3 className="text-2xl font-bold mb-4">Escucha en Línea</h3>
                 <Button
                   variant="secondary"
                   className="w-full font-bold bg-white text-primary hover:bg-white/90"
-                  onClick={() => window.open(radioUrl, "_blank")}
+                  onClick={handlePlay}
+                  data-testid="button-comunidad-listen"
                 >
-                  Sintonizar Ahora
+                  {isPlaying ? "Pausar" : "Sintonizar Ahora"}
                 </Button>
               </div>
             </motion.div>
@@ -583,6 +601,13 @@ export default function HomePage() {
           </div>
         </div>
       </footer>
+
+      {/* Hidden Audio Stream */}
+      <audio
+        ref={audioRef}
+        src="https://stream-178.zeno.fm/i7ldby582iruv?zt=eyJhbGciOiJIUzI1NiJ9.eyJzdHJlYW0iOiJpN2xkYnk1ODJpcnV2IiwiaG9zdCI6InN0cmVhbS0xNzguemVuby5mbSIsInJ0dGwiOjUsImp0aSI6InhLX29RbEt4UlNPTXhUcDlDMFliOHciLCJpYXQiOjE3ODA1MjQ5OTYsImV4cCI6MTc4MDUyNTA1Nn0.fXgyxkfnkJApnOi8TJw_EYkSX0K35afYD1tse9YkkSs"
+        preload="none"
+      />
 
       {/* Floating WhatsApp Button */}
       <a
