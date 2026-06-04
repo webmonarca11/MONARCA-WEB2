@@ -573,6 +573,46 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Mapa de cobertura */}
+      <section className="py-24 bg-card border-t border-white/5">
+        <div className="container px-6 mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <span className="inline-block text-xs font-semibold tracking-widest text-primary uppercase mb-4 border border-primary/30 px-4 py-1.5 rounded-full bg-primary/5">
+              Señal
+            </span>
+            <h2 className="text-4xl md:text-5xl font-serif font-bold mb-4">
+              Mapa de <span className="text-primary">Cobertura</span>
+            </h2>
+            <p className="text-muted-foreground text-lg max-w-xl mx-auto">
+              Consulta las zonas donde puedes sintonizar Radio Monarca 106.7 FM con mayor claridad.
+            </p>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {["mapa1.jpg", "mapa2.jpg", "mapa3.jpg"].map((img, index) => (
+              <motion.div
+                key={img}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                data-testid={`img-mapa-${index + 1}`}
+              >
+                <img
+                  src={`/${img}`}
+                  alt={`Mapa de cobertura ${index + 1}`}
+                  className="w-full h-auto rounded-lg shadow-md object-cover"
+                />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="py-12 bg-background border-t border-white/10 relative overflow-hidden">
         <div className="container px-6 mx-auto relative z-10">
